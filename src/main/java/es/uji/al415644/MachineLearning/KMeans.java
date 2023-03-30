@@ -21,6 +21,8 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
         this.numClusters = numClusters;
         this.numIterations = numIterations;
         this.seed = seed;
+        this.representantes = new ArrayList<>();
+        this.grupos = new ArrayList<>();
     }
     public void train(Table datos) throws Exception {
         if(datos.tamano() < numClusters){
@@ -95,5 +97,9 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
 
         }
         return resp;
+    }
+
+    public List<List<Double>> getRepresentantes(){
+        return representantes;
     }
 }
