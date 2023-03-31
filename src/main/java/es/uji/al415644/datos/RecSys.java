@@ -43,4 +43,8 @@ public class RecSys{
         }
         return lista;
     }
+    public Map<String, Integer> getEstimaciones(){
+        return estimaciones;
+    }
+
 }

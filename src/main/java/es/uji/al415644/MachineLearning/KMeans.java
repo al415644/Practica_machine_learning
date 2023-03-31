@@ -26,7 +26,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
     }
     public void train(Table datos) throws Exception {
         if(datos.tamano() < numClusters){
-            throw new Exception("Mas datos que grupos aweonao");
+            throw new Exception("Mas grupos que datos");
         }
         this.datos = datos;
         List<Integer> numeros_rep = new ArrayList<>();
@@ -40,7 +40,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
             numeros_rep.add(num);
         }
         for (int i = 0; i < numeros_rep.size(); i++) {
-            representantes.add(datos.getRowAt(numeros_rep.get(i)));
+            representantes.add(datos.getRowAt(numeros_rep.get(i)).getData());
         }
         for (int i = 0; i < numClusters; i++) {
             grupos.add(new Grupo(i));
@@ -50,7 +50,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
                 grupos.get(j).addRep(representantes.get(j));
             }
             for (int k = 0; k < datos.tamano(); k++) {
-                int num = estimate(datos.getRowAt(k));
+                int num = estimate(datos.getRowAt(k).getData());
                 grupos.get(num).add(datos.getRowRow(k));
             }
             for (int l = 0; l < grupos.size(); l++) {
@@ -69,7 +69,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
 
         for(int i = 0; i < numClusters; i++){
             double sumaEuclidea = 0;
-            List<Double> representante = this.datos.getRowAt(i);
+            List<Double> representante = this.datos.getRowAt(i).getData();
             for(int j=0; j<dato_comparar.size(); j++){
                 sumaEuclidea += Math. pow ((representante.get(i) - dato_comparar.get(i)), 2);
             }
@@ -100,5 +100,8 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
 
     public List<List<Double>> getRepresentantes(){
         return representantes;
+    }
+    public List<Grupo> getGrupos(){
+        return grupos;
     }
 }

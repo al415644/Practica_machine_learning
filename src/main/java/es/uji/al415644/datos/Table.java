@@ -25,8 +25,8 @@ public class Table {
     public void addheaders(String header) {
         headers.add(header);
     }
-    public List<Double> getRowAt(int rowNumber){
-        return rows.get(rowNumber).getData();
+    public Row getRowAt(int rowNumber){
+        return rows.get(rowNumber);
     }
     public Row getRowRow(int rownumber){
         return rows.get(rownumber);

@@ -22,13 +22,12 @@ public class CSV {
         while(fichero.hasNextLine()) {
             linea = fichero.nextLine().split(",");
             List<Double> lista= new ArrayList<>();
-            for (String cosa : linea) {
-                lista.add(Double.parseDouble(cosa));
+            for (int i = 0; i < linea.length; i++) {
+                lista.add((Double.parseDouble(linea[i])));
             }
             Row fila = new Row(lista);
             tabla.addRow(fila);
         }
-
         return tabla;
     }
     public Table readTableWithLabels(String nombreFichero) throws FileNotFoundException{
@@ -40,13 +39,14 @@ public class CSV {
         }
         while(fichero.hasNextLine()) {
             linea = fichero.nextLine().split(",");
-            List<Double> lista= new ArrayList<>();
-            for (String cosa : linea) {
-                lista.add(Double.parseDouble(cosa));
-            }if (!tabla.hasLlave(linea[linea.length-1])){
-                tabla.addType(linea[linea.length-1]);
+            List<Double> lista = new ArrayList<>();
+            for (int i = 0; i < linea.length - 1; i++) {
+                lista.add((Double.parseDouble(linea[i])));
             }
-            RowWithLabel fila = new RowWithLabel(lista, tabla.numeroDeLlave(linea[linea.length-1]));
+            if (!tabla.contieneLlave(linea[linea.length - 1])){
+                tabla.addLabel(linea[linea.length - 1]);
+        }
+            RowWithLabel fila = new RowWithLabel(lista, tabla.getValue(linea[linea.length-1]));
             tabla.addRow(fila);
         }
 

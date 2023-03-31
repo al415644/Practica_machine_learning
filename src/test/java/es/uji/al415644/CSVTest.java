@@ -2,6 +2,7 @@ package es.uji.al415644;
 
 import es.uji.al415644.datos.CSV;
 import es.uji.al415644.datos.Table;
+import es.uji.al415644.datos.TableWithLabels;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -14,12 +15,14 @@ class CSVTest {
     @Test
     void readtable() throws FileNotFoundException {
         nuevo = new CSV();
-        Table tabla = nuevo.readtable("ficheropatest.csv");
-        assertEquals(12, tabla.tamano());
+        Table tabla = nuevo.readtable("miles_dollars.csv");
+        assertEquals(25, tabla.tamano());
     }
 
     @Test
-    void readTableWithLabels() {
-        assertEquals(50, datos.tamano());
+    void readTableWithLabels() throws FileNotFoundException {
+        nuevo = new CSV();
+        TableWithLabels tabla = (TableWithLabels) nuevo.readTableWithLabels("iris.csv");
+        assertEquals(150, tabla.tamano());
     }
 }

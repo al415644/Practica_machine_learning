@@ -5,7 +5,7 @@ import java.util.List;
 public class RowWithLabel extends Row {
 
     public int numberClass;
-    public RowWithLabel(List<Double> e1, Integer numberClass) {
+    public RowWithLabel(List<Double> e1, int numberClass) {
         super(e1);
         this.numberClass = numberClass;
     }

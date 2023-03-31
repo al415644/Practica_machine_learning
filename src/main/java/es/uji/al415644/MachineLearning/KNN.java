@@ -13,11 +13,14 @@ public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Intege
 
     public void train (TableWithLabels tabla) { data = tabla;}
     public Integer estimate (List<Double> sample) {
+        if (sample.isEmpty()) {
+            return -1;
+        }
         double min = Double.POSITIVE_INFINITY;
         int numclase = 0;
         RowWithLabel actualRow = null;
         for (int i = 0; i < data.tamano(); i++) {
-            actualRow = data.getRowWithLabelAt(i);
+            actualRow = data.getRowAt(i);
             double distancia = distancia(sample, actualRow.getData());
             if (distancia < min) {
                 min = distancia;
@@ -28,6 +31,9 @@ public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Intege
     }
 
     public double distancia(List<Double> sample, List<Double> elemento) {
+        if(sample.isEmpty() || elemento.isEmpty()) {
+            return -1;
+        }
         double distancia;
         double sumaEuclidea = 0;
         for (int i = 0; i < sample.size (); i++) {
