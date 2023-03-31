@@ -42,7 +42,39 @@ class KMeansTest {
 
 
     @Test
-    void estimate() {
+    void estimate() throws Exception {
+        // Test de caso base: cuando dato_comparar está vacío.
+        List<Double> dato_comparar = new ArrayList<>();
+        KMeans kMeans = new KMeans(0, 100, 3);
+        kMeans.train(new Table());
+        Integer result = kMeans.estimate(dato_comparar);
+        assertNull(result);
 
+        // Test cuando numClusters es 0.
+        KMeans kMeans2 = new KMeans(0, 100, 3);
+        dato_comparar = Arrays.asList(1.0, 2.0, 3.0);
+        Table tabla = new Table();
+        Row fila = new Row(dato_comparar);
+        tabla.addRow(fila);
+        kMeans.train(tabla);
+
+        result = kMeans2.estimate(dato_comparar);
+        assertNull(result);
+
+        // Test cuando numClusters es mayor que 1 y dato_comparar tiene una distancia menor a otro centroide.
+        KMeans kMeans3 = new KMeans(2, 100, 3);
+        dato_comparar = Arrays.asList(1.0, 2.0, 3.0);
+        List<Double> anadir1 = new ArrayList<>();
+        List<Double> anadir2 = new ArrayList<>();
+        anadir1 = Arrays.asList(1.0,1.0,1.0);
+        anadir2 = Arrays.asList(4.0,4.0,4.0);
+        Table tabla2 = new Table();
+        Row fila2_1 = new Row(anadir1);
+        Row fila2_2 = new Row(anadir2);
+        tabla2.addRow(fila2_1);
+        tabla2.addRow(fila2_2);
+        kMeans.train(tabla);
+        result = kMeans.estimate(dato_comparar);
+        assertEquals((Integer)0, result);
     }
 }

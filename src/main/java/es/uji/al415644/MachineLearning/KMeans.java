@@ -31,7 +31,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
         this.datos = datos;
         List<Integer> numeros_rep = new ArrayList<>();
         Random random = new Random(seed);
-         numeros_rep.add(random.nextInt(datos.tamano()));
+        numeros_rep.add(random.nextInt(datos.tamano()));
         for (int i = 1; i < numClusters; i++) {
             int num =  random.nextInt(datos.tamano());
             while (numeros_rep.contains(num)) {
@@ -88,11 +88,10 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
         List<Double> resp = new ArrayList<>();
         for (int i = 0; i < grupo.GetListaMiembros().get(0).getData().size(); i++) {
             double total = 0;
-            double media = 0;
             for (int j = 0; j < grupo.GetListaMiembros().size(); j++) {
                 total += grupo.GetListaMiembros().get(j).getData().get(i);
             }
-            media = total/grupo.GetListaMiembros().size();
+            double media = total/grupo.GetListaMiembros().size();
             resp.add(media);
 
         }
