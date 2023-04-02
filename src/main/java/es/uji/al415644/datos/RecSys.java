@@ -1,6 +1,12 @@
 package es.uji.al415644.datos;
 
 import java.util.*;
+import javax.imageio.plugins.tiff.TIFFImageReadParam;
+import java.lang.Math;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class RecSys{
     private Algorithm algoritm;
@@ -20,7 +26,7 @@ public class RecSys{
 
     private void llenarMapa(Table testData, List<String> testItemNames){
         for (int i = 0; i < testData.tamano(); i++) {
-            int num = (int) algoritm.estimate(testData.getRowAt(i));
+            int num = (int) algoritm.estimate(testData.getRowAt(i).getData());
             this.estimaciones.put(testItemNames.get(i), num);
         }
     }
@@ -33,12 +39,12 @@ public class RecSys{
 
     private ArrayList<String> crearLista(String nameLikedItem, int numRecommendations){
         int codigo_grupo = estimaciones.get(nameLikedItem);
-        ArrayList<String> keys = (ArrayList<String>) estimaciones.keySet();
-        ArrayList<Integer> values = (ArrayList<Integer>) estimaciones.values();
         ArrayList<String> lista = new ArrayList<>();
-        for (int i = 0; i < values.size(); i++) {
-            if (values.get(i).equals(codigo_grupo) && lista.size()<numRecommendations){
-                lista.add(keys.get(i));
+        Iterator<String> it = estimaciones.keySet().iterator();
+        while(it.hasNext() && numRecommendations> lista.size()){
+            String name = it.next();
+            if(name != nameLikedItem && estimaciones.get(name)==codigo_grupo){
+                lista.add(name);
             }
         }
         return lista;
