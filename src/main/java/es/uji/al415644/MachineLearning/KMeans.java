@@ -1,28 +1,28 @@
 package es.uji.al415644.MachineLearning;
 
 import es.uji.al415644.datos.*;
-
-import javax.imageio.plugins.tiff.TIFFImageReadParam;
-import java.lang.Math;
+import es.uji.al415644.interfaces.Algorithm;
+import es.uji.al415644.interfaces.Distances;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
-
     private Table datos;
+    private Distances distancia;
     private List<List<Double>> representantes;
     private List<Grupo> grupos;
     private int numClusters;
     private int numIterations;
     private long  seed;
-    public KMeans(int numClusters, int numIterations, long seed){
+    public KMeans(int numClusters, int numIterations, long seed, Distances distancia){
         this.numClusters = numClusters;
         this.numIterations = numIterations;
         this.seed = seed;
         this.representantes = new ArrayList<>();
         this.grupos = new ArrayList<>();
+        this.distancia = distancia;
     }
     public void train(Table datos) throws Exception {
         if(datos.tamano() < numClusters){
@@ -68,12 +68,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
         List<Double> distancia = new ArrayList<>();
 
         for(int i = 0; i < numClusters; i++){
-            double sumaEuclidea = 0;
-            List<Double> representante = this.datos.getRowAt(i).getData();
-            for(int j=0; j<dato_comparar.size(); j++){
-                sumaEuclidea += Math. pow ((representante.get(i) - dato_comparar.get(i)), 2);
-            }
-            sumaEuclidea = Math.sqrt(sumaEuclidea);
+            double sumaEuclidea = this.distancia.calculateDistance(dato_comparar, datos.getRowAt(i).getData());
             distancia.add(sumaEuclidea);
         }
         for (int i = 0; i < distancia.size(); i++) {

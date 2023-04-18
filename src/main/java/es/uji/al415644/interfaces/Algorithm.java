@@ -1,4 +1,6 @@
-package es.uji.al415644.datos;
+package es.uji.al415644.interfaces;
+
+import es.uji.al415644.datos.Table;
 
 import java.util.ArrayList;
 

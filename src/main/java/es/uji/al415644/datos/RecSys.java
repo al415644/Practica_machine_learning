@@ -1,12 +1,11 @@
 package es.uji.al415644.datos;
 
+import es.uji.al415644.interfaces.Algorithm;
+
 import java.util.*;
-import javax.imageio.plugins.tiff.TIFFImageReadParam;
-import java.lang.Math;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RecSys{
     private Algorithm algoritm;

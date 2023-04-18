@@ -1,15 +1,19 @@
 package es.uji.al415644.MachineLearning;
 
-import es.uji.al415644.datos.Algorithm;
+import es.uji.al415644.interfaces.Algorithm;
+import es.uji.al415644.interfaces.Distances;
 import es.uji.al415644.datos.RowWithLabel;
 import es.uji.al415644.datos.TableWithLabels;
 
 import java.util.List;
 
-public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Integer > {
+public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Integer> {
     private TableWithLabels data;
+    private Distances distancia;
 
-    public KNN(){}
+    public KNN(Distances distancia){
+        this.distancia = distancia;
+    }
 
     public void train (TableWithLabels tabla) { data = tabla;}
     public Integer estimate (List<Double> sample) {
@@ -31,16 +35,7 @@ public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Intege
     }
 
     public double distancia(List<Double> sample, List<Double> elemento) {
-        if(sample.isEmpty() || elemento.isEmpty()) {
-            return -1;
-        }
-        double distancia;
-        double sumaEuclidea = 0;
-        for (int i = 0; i < sample.size (); i++) {
-            sumaEuclidea += Math. pow ((sample. get (i) - elemento. get (i)), 2);
-        }
-        distancia = Math.sqrt(sumaEuclidea);
-        return distancia;
+        return this.distancia.calculateDistance(sample, elemento);
     }
 
 }
