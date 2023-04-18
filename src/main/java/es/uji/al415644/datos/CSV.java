@@ -28,6 +28,7 @@ public class CSV {
             Row fila = new Row(lista);
             tabla.addRow(fila);
         }
+        fichero.close();
         return tabla;
     }
     public Table readTableWithLabels(String nombreFichero) throws FileNotFoundException{

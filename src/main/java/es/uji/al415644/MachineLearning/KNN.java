@@ -1,13 +1,14 @@
 package es.uji.al415644.MachineLearning;
 
 import es.uji.al415644.interfaces.Algorithm;
+import es.uji.al415644.interfaces.DistanceClient;
 import es.uji.al415644.interfaces.Distances;
 import es.uji.al415644.datos.RowWithLabel;
 import es.uji.al415644.datos.TableWithLabels;
 
 import java.util.List;
 
-public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Integer> {
+public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Integer>, DistanceClient {
     private TableWithLabels data;
     private Distances distancia;
 
@@ -37,5 +38,7 @@ public class KNN<T,U,W> implements Algorithm<TableWithLabels,List<Double>,Intege
     public double distancia(List<Double> sample, List<Double> elemento) {
         return this.distancia.calculateDistance(sample, elemento);
     }
-
+    public void setDistance(Distances distancia){
+        this.distancia = distancia;
+    }
 }

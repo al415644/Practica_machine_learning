@@ -2,13 +2,14 @@ package es.uji.al415644.MachineLearning;
 
 import es.uji.al415644.datos.*;
 import es.uji.al415644.interfaces.Algorithm;
+import es.uji.al415644.interfaces.DistanceClient;
 import es.uji.al415644.interfaces.Distances;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
+public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer>, DistanceClient {
     private Table datos;
     private Distances distancia;
     private List<List<Double>> representantes;
@@ -98,5 +99,8 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer> {
     }
     public List<Grupo> getGrupos(){
         return grupos;
+    }
+    public void setDistance(Distances distancia){
+        this.distancia = distancia;
     }
 }
