@@ -1,6 +1,6 @@
-package es.uji.al415644.MachineLearning;
+package es.uji.al415644.machinelearning;
 
-import es.uji.al415644.datos.*;
+import es.uji.al415644.estructuras.Table;
 import es.uji.al415644.interfaces.Algorithm;
 import es.uji.al415644.interfaces.DistanceClient;
 import es.uji.al415644.interfaces.Distances;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer>, DistanceClient {
+public class KMeans implements Algorithm<Table,List<Double>,Integer>, DistanceClient {
     private Table datos;
     private Distances distancia;
     private List<List<Double>> representantes;
@@ -52,7 +52,7 @@ public class KMeans<T,U,W> implements Algorithm<Table,List<Double>,Integer>, Dis
             }
             for (int k = 0; k < datos.tamano(); k++) {
                 int num = estimate(datos.getRowAt(k).getData());
-                grupos.get(num).add(datos.getRowRow(k));
+                grupos.get(num).add(datos.getRowAt(k));
             }
             for (int l = 0; l < grupos.size(); l++) {
                 representantes.set(l,centroide(grupos.get(l)));

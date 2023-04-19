@@ -1,7 +1,8 @@
 package es.uji.al415644.datos;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import es.uji.al415644.estructuras.RowWithLabel;
+import es.uji.al415644.estructuras.TableWithLabels;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

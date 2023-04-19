@@ -1,9 +1,9 @@
 package es.uji.al415644.datos;
 
-import es.uji.al415644.datos.Row;
-import es.uji.al415644.datos.RowWithLabel;
-import es.uji.al415644.datos.Table;
-import es.uji.al415644.datos.TableWithLabels;
+import es.uji.al415644.estructuras.Row;
+import es.uji.al415644.estructuras.RowWithLabel;
+import es.uji.al415644.estructuras.Table;
+import es.uji.al415644.estructuras.TableWithLabels;
 
 import java.io.File;
 import java.io.FileNotFoundException;

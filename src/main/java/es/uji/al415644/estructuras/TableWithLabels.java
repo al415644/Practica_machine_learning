@@ -1,4 +1,4 @@
-package es.uji.al415644.datos;
+package es.uji.al415644.estructuras;
 
 import java.util.HashMap;
 import java.util.Map;

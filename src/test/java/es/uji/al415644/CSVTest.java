@@ -1,8 +1,8 @@
 package es.uji.al415644;
 
 import es.uji.al415644.datos.CSV;
-import es.uji.al415644.datos.Table;
-import es.uji.al415644.datos.TableWithLabels;
+import es.uji.al415644.estructuras.Table;
+import es.uji.al415644.estructuras.TableWithLabels;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

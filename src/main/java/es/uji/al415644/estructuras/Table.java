@@ -1,4 +1,4 @@
-package es.uji.al415644.datos;
+package es.uji.al415644.estructuras;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +27,5 @@ public class Table {
     }
     public Row getRowAt(int rowNumber){
         return rows.get(rowNumber);
-    }
-    public Row getRowRow(int rownumber){
-        return rows.get(rownumber);
     }
 }

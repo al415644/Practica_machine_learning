@@ -1,10 +1,10 @@
-package es.uji.al415644.MachineLearning;
+package es.uji.al415644.machinelearning;
 
 import es.uji.al415644.interfaces.Algorithm;
 import es.uji.al415644.interfaces.DistanceClient;
 import es.uji.al415644.interfaces.Distances;
-import es.uji.al415644.datos.RowWithLabel;
-import es.uji.al415644.datos.TableWithLabels;
+import es.uji.al415644.estructuras.RowWithLabel;
+import es.uji.al415644.estructuras.TableWithLabels;
 
 import java.util.List;
 

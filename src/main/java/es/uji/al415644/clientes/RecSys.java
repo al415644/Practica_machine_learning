@@ -1,5 +1,6 @@
-package es.uji.al415644.datos;
+package es.uji.al415644.clientes;
 
+import es.uji.al415644.estructuras.Table;
 import es.uji.al415644.interfaces.Algorithm;
 
 import java.util.*;
@@ -20,10 +21,6 @@ public class RecSys{
     }
 
     public void run(Table testData, List<String> testItemNames){
-        llenarMapa(testData, testItemNames);
-    }
-
-    private void llenarMapa(Table testData, List<String> testItemNames){
         for (int i = 0; i < testData.tamano(); i++) {
             int num = (int) algoritm.estimate(testData.getRowAt(i).getData());
             this.estimaciones.put(testItemNames.get(i), num);
@@ -32,11 +29,6 @@ public class RecSys{
 
     public List<String> recommend(String nameLikedItem, int numRecommendations){
 
-        ArrayList<String> devolver = crearLista(nameLikedItem, numRecommendations);
-        return devolver;
-    }
-
-    private ArrayList<String> crearLista(String nameLikedItem, int numRecommendations){
         int codigo_grupo = estimaciones.get(nameLikedItem);
         ArrayList<String> lista = new ArrayList<>();
         Iterator<String> it = estimaciones.keySet().iterator();
@@ -48,6 +40,7 @@ public class RecSys{
         }
         return lista;
     }
+
     public Map<String, Integer> getEstimaciones(){
         return estimaciones;
     }

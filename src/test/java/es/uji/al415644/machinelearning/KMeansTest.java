@@ -1,11 +1,9 @@
-package es.uji.al415644.MachineLearning;
+package es.uji.al415644.machinelearning;
 
-import es.uji.al415644.datos.Row;
-import es.uji.al415644.datos.Table;
+import es.uji.al415644.estructuras.Row;
+import es.uji.al415644.estructuras.Table;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 

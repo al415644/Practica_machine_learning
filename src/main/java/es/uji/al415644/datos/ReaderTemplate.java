@@ -1,10 +1,8 @@
 package es.uji.al415644.datos;
 
-import java.io.File;
+import es.uji.al415644.estructuras.Table;
+
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public abstract class ReaderTemplate {
     private Table tabla;

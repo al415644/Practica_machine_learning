@@ -1,4 +1,6 @@
-package es.uji.al415644.datos;
+package es.uji.al415644.machinelearning;
+
+import es.uji.al415644.estructuras.Row;
 
 import java.util.ArrayList;
 import java.util.List;

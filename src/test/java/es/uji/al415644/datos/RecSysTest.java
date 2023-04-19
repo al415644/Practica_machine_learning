@@ -1,11 +1,13 @@
 package es.uji.al415644.datos;
 
-import es.uji.al415644.MachineLearning.KMeans;
+import es.uji.al415644.clientes.RecSys;
+import es.uji.al415644.estructuras.Row;
+import es.uji.al415644.estructuras.Table;
+import es.uji.al415644.machinelearning.KMeans;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

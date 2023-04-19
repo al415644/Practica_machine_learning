@@ -1,7 +1,7 @@
-package es.uji.al415644.MachineLearning;
+package es.uji.al415644.machinelearning;
 
 import es.uji.al415644.datos.CSV;
-import es.uji.al415644.datos.TableWithLabels;
+import es.uji.al415644.estructuras.TableWithLabels;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

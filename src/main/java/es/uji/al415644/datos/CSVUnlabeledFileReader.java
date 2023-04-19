@@ -1,5 +1,8 @@
 package es.uji.al415644.datos;
 
+import es.uji.al415644.estructuras.Row;
+import es.uji.al415644.estructuras.Table;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
