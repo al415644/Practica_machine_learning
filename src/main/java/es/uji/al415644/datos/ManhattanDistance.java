@@ -15,7 +15,7 @@ public class ManhattanDistance implements Distances {
         for (int i = 0; i < p.size (); i++) {
             sumaEuclidea += (p. get (i) - q. get (i));
         }
-        distancia = sumaEuclidea;
+        distancia = Math.abs(sumaEuclidea);
         return distancia;
     }
 

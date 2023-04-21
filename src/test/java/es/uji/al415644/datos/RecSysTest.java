@@ -3,6 +3,7 @@ package es.uji.al415644.datos;
 import es.uji.al415644.clientes.RecSys;
 import es.uji.al415644.estructuras.Row;
 import es.uji.al415644.estructuras.Table;
+import es.uji.al415644.interfaces.Distances;
 import es.uji.al415644.machinelearning.KMeans;
 import org.junit.jupiter.api.Test;
 
@@ -27,15 +28,14 @@ class RecSysTest {
             testItemNames.add("Texto2");
 
             // Crear objeto RecSys y llamar a run
-            KMeans kMeans = new KMeans<>(2, 100, 1);
+            Distances distancia = new EuclideanDistance();
+            KMeans kMeans = new KMeans(2, 100, 1, distancia);
             kMeans.train(table);
             RecSys recSys = new RecSys(kMeans);
             recSys.run(table, testItemNames);
 
             // Comprobar que el mapa de estimaciones contiene los valores correctos
             assertEquals(2, recSys.getEstimaciones().size());
-            assertEquals(1, recSys.getEstimaciones());
-            assertEquals(0, recSys.getEstimaciones());
 
         try {
             Table emptyTable = new Table();
@@ -59,7 +59,8 @@ class RecSysTest {
         testItemNames.add("nombreDeElementoConocido");
 
         // Crear objeto RecSys y llamar a run
-        KMeans kMeans = new KMeans<>(2, 100, 1);
+        Distances distancia = new EuclideanDistance();
+        KMeans kMeans = new KMeans(2, 100, 1, distancia);
         kMeans.train(table);
         RecSys recSys = new RecSys(kMeans);
         recSys.run(table, testItemNames);

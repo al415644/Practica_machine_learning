@@ -1,7 +1,9 @@
 package es.uji.al415644.machinelearning;
 
 import es.uji.al415644.datos.CSV;
+import es.uji.al415644.datos.EuclideanDistance;
 import es.uji.al415644.estructuras.TableWithLabels;
+import es.uji.al415644.interfaces.Distances;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,8 @@ class KNNTest {
     @Test
     @DisplayName("Test estimacion de clase")
     void estimate() throws FileNotFoundException {
-        KNN datos = new KNN<>();
+        Distances distancia = new EuclideanDistance();
+        KNN datos = new KNN(distancia);
         CSV prueba = new CSV();
         datos.train((TableWithLabels) prueba.readTableWithLabels("iris.csv"));
         List<Double> lista1 = new ArrayList<>();
@@ -31,7 +34,8 @@ class KNNTest {
     @DisplayName("Test metrica Euclidea")
     void metricaEuclidea() throws FileNotFoundException {
         CSV prueba = new CSV();
-        KNN test = new KNN();
+        Distances distancia = new EuclideanDistance();
+        KNN test = new KNN(distancia);
         List<Double> Prueba1 = new ArrayList<>();
         List<Double> Prueba2 = new ArrayList<>();
 

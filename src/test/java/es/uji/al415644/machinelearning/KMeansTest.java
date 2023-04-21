@@ -1,7 +1,9 @@
 package es.uji.al415644.machinelearning;
 
+import es.uji.al415644.datos.EuclideanDistance;
 import es.uji.al415644.estructuras.Row;
 import es.uji.al415644.estructuras.Table;
+import es.uji.al415644.interfaces.Distances;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class KMeansTest {
     @Test
     public void testTrain() throws Exception {
-        KMeans kMeans = new KMeans<>(2, 100, 1);
+        Distances distancia = new EuclideanDistance();
+        KMeans kMeans = new KMeans(2, 100, 1, distancia);
         Table datos = new Table();
         datos.addRow(new Row(Arrays.asList(1.0, 1.0)));
         datos.addRow(new Row(Arrays.asList(2.0,2.0)));
@@ -20,7 +23,7 @@ class KMeansTest {
         kMeans.train(datos);
         assertEquals(2, kMeans.getRepresentantes().size());
         assertEquals(2, kMeans.getGrupos().size());
-        kMeans = new KMeans<>(6, 100, 1);
+        kMeans = new KMeans(6, 100, 1, distancia);
         try {
             kMeans.train(datos);
             fail("Se esperaba una excepción");
@@ -32,7 +35,8 @@ class KMeansTest {
 
     @Test
     void estimate() throws Exception {
-            KMeans kMeans = new KMeans(3, 10, 1234);
+            Distances distancia = new EuclideanDistance();
+            KMeans kMeans = new KMeans(3, 10, 1234, distancia);
             Table datos = new Table();
             datos.addRow(new Row(Arrays.asList(1.0, 2.0, 3.0)));
             datos.addRow(new Row(Arrays.asList(4.0, 5.0, 6.0)));
