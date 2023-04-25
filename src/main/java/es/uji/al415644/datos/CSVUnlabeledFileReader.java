@@ -10,18 +10,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CSVUnlabeledFileReader extends ReaderTemplate {
-    private String[] linea;
     private Scanner fichero;
-    private Table tabla;
 
     public CSVUnlabeledFileReader(String nombreFichero) {
         super(nombreFichero);
-        this.tabla = new Table();
     }
 
     void openSource(String source) throws FileNotFoundException {
-        this.fichero = new Scanner(new File(source));
-        this.linea = fichero.nextLine().split(",");
+        fichero = new Scanner(new File(source));
     }
     void processHeaders(String headers){
         String[] cabeceras = headers.split(",");
@@ -30,7 +26,7 @@ public class CSVUnlabeledFileReader extends ReaderTemplate {
         }
     }
     void processData(String data){
-        linea = data.split(",");
+        String[] linea = data.split(",");
         List<Double> lista= new ArrayList<>();
         for (int i = 0; i < linea.length; i++) {
             lista.add((Double.parseDouble(linea[i])));

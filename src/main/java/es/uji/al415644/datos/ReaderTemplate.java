@@ -5,9 +5,8 @@ import es.uji.al415644.estructuras.Table;
 import java.io.FileNotFoundException;
 
 public abstract class ReaderTemplate {
-    private Table tabla;
-
-    private String nombreFichero;
+    protected Table tabla;
+    protected String nombreFichero;
     public ReaderTemplate(String nombreFichero){
         this.tabla = new Table();
         this.nombreFichero = nombreFichero;
@@ -28,6 +27,7 @@ public abstract class ReaderTemplate {
             processData(getNextData());
         }
         closeSource();
+
         return tabla;
     }
 

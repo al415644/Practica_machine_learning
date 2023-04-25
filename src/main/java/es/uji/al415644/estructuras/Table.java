@@ -28,4 +28,5 @@ public class Table {
     public Row getRowAt(int rowNumber){
         return rows.get(rowNumber);
     }
+    public List<String> getHeaders(){return headers;}
 }
