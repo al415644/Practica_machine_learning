@@ -16,7 +16,7 @@ public class Hello extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
         StackPane root = new StackPane();
-        Button btn = new Button("Hola");
+        Button btn = new Button("Pincha aqui");
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, 250, 250));
         primaryStage.show();
